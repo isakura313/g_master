@@ -13,10 +13,15 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        });
+      Schema::create('images', function(Blueprint $table)
+      {
+        $table->increments('id')->unsigned(); // id пользователя
+        $table->integer('album_id')->unsigned(); // тут я думаю понятно
+        $table->string('image');
+        $table->string('description');
+        $table->foreign('album_id')->references('id')->on('albums')->onDelete('CASCADE')->onUpdate('CASCADE'); //события происходящие с изображением
+        $table->timestamps();
+      });
     }
 
     /**
