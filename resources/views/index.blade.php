@@ -1,11 +1,8 @@
 @include('includes.header')
   <body>
   @include('includes.nav')
-
       <div class="container">
-
         <div class="starter-template">
-
         <div class="row">
           @foreach($albums as $album)
             <div class="col-lg-3">
@@ -22,9 +19,7 @@
             </div>
           @endforeach
         </div>
-
       </div><!-- /.container -->
     </div>
-
   </body>
 </html>

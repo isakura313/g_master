@@ -9,9 +9,9 @@ use App\Album;
 
 class AlbumsController extends Controller
 {
-    public function getList()
+    public function getList() //получение списка альбомов
   {
-      $albums = Album::with('Photos')->get();
+      $albums = Album::with('Photos')->get(); 
       return view('index')->with('albums',$albums);
   }
 
@@ -19,38 +19,23 @@ class AlbumsController extends Controller
   {
       $album = Album::with('Photos')->find($id);
       $albums = Album::with('Photos')->get();
-      //dd($album);
       return view('album', ['album'=>$album, 'albums'=>$albums]);
-      //->with('album',$album);
   }
 
   public function getForm()
   {
-      return view('createalbum');
+      return view('createalbum'); //форма создания альбома
   }
 
   public function postCreate(Request $request)
   {
-      /*$rules = array(
-
-        'name' => 'required',
-        'cover_image'=>'required|image'
-
-    );*/
-
-      $rules = ['name' => 'required', 'cover_image'=>'required|image'];
-
+      $rules = ['name' => 'required', 'cover_image'=>'required|image'];  // нельзя создать альбом без имени и обложки
       $input = ['name' => null];
-
-      //Validator::make($input, $rules)->passes(); // true
-
+    //валидатор мы обсудим в следующей части
       $validator = Validator::make($request->all(), $rules);
       if($validator->fails()){
-        // return Redirect::route('create_album_form') ;
         return redirect()->route('create_album_form')->withErrors($validator)->withInput();
       }
-
-      // $file = Input::file('cover_image');
       $file = $request->file('cover_image');
       $random_name = str_random(8);
       $destinationPath = 'albums/';
@@ -66,12 +51,10 @@ class AlbumsController extends Controller
       return redirect()->route('show_album',['id'=>$album->id]);
   }
 
-  public function getDelete($id)
+  public function getDelete($id) // возможность удаления альбома
   {
       $album = Album::find($id);
-
       $album->delete();
-
       return Redirect::route('index');
   }
 }
