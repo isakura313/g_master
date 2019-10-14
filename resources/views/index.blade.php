@@ -5,7 +5,7 @@
     <title>Awesome Albums</title>
     <!-- Latest compiled and minified CSS -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
     <style>
@@ -34,11 +34,11 @@
       </div><!--/.nav-collapse -->
     </div>
     </div>
-    
+
       <div class="container">
-    
+
         <div class="starter-template">
-      
+
         <div class="row">
           @foreach($albums as $album)
             <div class="col-lg-3">
@@ -49,15 +49,15 @@
                   <p>{{$album->description}}</p>
                   <p>{{count($album->Photos)}} image(s).</p>
                   <p>Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{date("g:ha",strtotime($album->created_at)) }}</p>
-                  <p><a href="{{URL::route('show_album')}}" class="btn btn-big btn-default">Show Gallery</a></p>
+                  <p><a href="{{route('show_album', ['id'=>$album->id])}}" class="btn btn-big btn-default">Show Gallery</a></p>
                 </div>
               </div>
             </div>
           @endforeach
         </div>
-    
+
       </div><!-- /.container -->
     </div>
-    
+
   </body>
 </html>

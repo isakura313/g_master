@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
-    protected $table = 'albums'; //для начала объявим в какой таблице нас создаются альбомы
-    protected $fillable = array('name','description','cover_image');  // какие свойства определяют наш альбом?
+    protected $table = 'albums';
+
+    protected $fillable = array('name','description','cover_image');
 
     public function Photos(){
-  
-      return $this->has_many('images'); //количество изображений в альбоме
+        return $this->hasMany('App\Image');
     }
-
 }

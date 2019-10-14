@@ -3,65 +3,75 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
+use Validator;
 use App\Album;
 
 class AlbumsController extends Controller
 {
-    
-  public function getList()
+    public function getList()
   {
-    $albums = Album::with('Photos')->get();
-    return view('index')->with('albums',$albums);
+      $albums = Album::with('Photos')->get();
+      return view('index')->with('albums',$albums);
   }
+
   public function getAlbum($id)
   {
-    $album = Album::with('Photos')->find($id);
-    return view('album')
-    ->with('album',$album);
+      $album = Album::with('Photos')->find($id);
+      $albums = Album::with('Photos')->get();
+      //dd($album);
+      return view('album', ['album'=>$album, 'albums'=>$albums]);
+      //->with('album',$album);
   }
+
   public function getForm()
   {
-    return  view('createalbum');
-  }
-  public function postCreate() //валидизации информации приходящей с формы
-  {
-    $rules = array(
-
-      'name' => 'required',
-      'cover_image'=>'required|image'
-
-    );
-    
-    $validator = Validator::make(Input::all(), $rules);
-    if($validator->fails()){
-
-      return Redirect::route('create_album_form')
-      ->withErrors($validator)
-      ->withInput();
-    }
-
-    $file = Input::file('cover_image');
-    $random_name = str_random(8);
-    $destinationPath = 'albums/';
-    $extension = $file->getClientOriginalExtension();
-    $filename=$random_name.'_cover.'.$extension;
-    $uploadSuccess = Input::file('cover_image')
-    ->move($destinationPath, $filename);
-    $album = Album::create(array(
-      'name' => Input::get('name'),
-      'description' => Input::get('description'),
-      'cover_image' => $filename,
-    ));
-
-    return Redirect::route('show_album',array('id'=>$album->id));
+      return view('createalbum');
   }
 
-  public function getDelete($id) //удаление альбома и фотографий, которые к нему были ассоциированы
+  public function postCreate(Request $request)
   {
-    $album = Album::find($id);
+      /*$rules = array(
 
-    $album->delete();
+        'name' => 'required',
+        'cover_image'=>'required|image'
 
-    return Redirect::route('index');
+    );*/
+
+      $rules = ['name' => 'required', 'cover_image'=>'required|image'];
+
+      $input = ['name' => null];
+
+      //Validator::make($input, $rules)->passes(); // true
+
+      $validator = Validator::make($request->all(), $rules);
+      if($validator->fails()){
+        // return Redirect::route('create_album_form') ;
+        return redirect()->route('create_album_form')->withErrors($validator)->withInput();
+      }
+
+      // $file = Input::file('cover_image');
+      $file = $request->file('cover_image');
+      $random_name = str_random(8);
+      $destinationPath = 'albums/';
+      $extension = $file->getClientOriginalExtension();
+      $filename=$random_name.'_cover.'.$extension;
+      $uploadSuccess = $request->file('cover_image')->move($destinationPath, $filename);
+      $album = Album::create(array(
+        'name' => $request->get('name'),
+        'description' => $request->get('description'),
+        'cover_image' => $filename,
+      ));
+
+      return redirect()->route('show_album',['id'=>$album->id]);
+  }
+
+  public function getDelete($id)
+  {
+      $album = Album::find($id);
+
+      $album->delete();
+
+      return Redirect::route('index');
   }
 }
