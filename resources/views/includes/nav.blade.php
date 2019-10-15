@@ -10,6 +10,6 @@
         <ul class="nav navbar-nav">
           <li><a href="{{URL::route('create_album_form')}}">Создание нового альбома</a></li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
     </div>
     </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Validator;
 use App\Album;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
 
 class AlbumsController extends Controller
 {
@@ -37,7 +39,8 @@ class AlbumsController extends Controller
         return redirect()->route('create_album_form')->withErrors($validator)->withInput();
       }
       $file = $request->file('cover_image');
-      $random_name = str_random(8);
+      //произошел рефакторинг кода
+      $random_name = Str::random(8);
       $destinationPath = 'albums/';
       $extension = $file->getClientOriginalExtension();
       $filename=$random_name.'_cover.'.$extension;

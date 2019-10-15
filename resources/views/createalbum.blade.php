@@ -26,20 +26,20 @@
         <form name="createnewalbum" method="POST"action="{{route('create_album')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
           <fieldset>
-            <legend>Create an Album</legend>
+            <legend>Создайте альбом</legend>
             <div class="form-group">
-              <label for="name">Album Name</label>
-              <input name="name" type="text" class="form-control"placeholder="Album Name" value="{{old('name')}}">
+              <label for="name">Имя альбома</label>
+              <input name="name" type="text" class="form-control"placeholder="Название альбома" value="{{old('name')}}">
             </div>
             <div class="form-group">
-              <label for="description">Album Description</label>
-              <textarea name="description" type="text"class="form-control" placeholder="Albumdescription">{{old('descrption')}}</textarea>
+              <label for="description">Описание альбома</label>
+              <textarea name="description" type="text"class="form-control" placeholder="Описание альбома">{{old('descrption')}}</textarea>
             </div>
             <div class="form-group">
-              <label for="cover_image">Select a Cover Image</label>
+              <label for="cover_image">Выберите обложку для альбома</label>
               {{Form::file('cover_image')}}
             </div>
-            <button type="submit" class="btnbtn-default">Create!</button>
+            <button type="submit" class="btnbtn-default">Создать!</button>
           </fieldset>
         </form>
       </div>
