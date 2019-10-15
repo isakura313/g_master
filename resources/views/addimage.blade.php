@@ -23,16 +23,16 @@
             {{ csrf_field() }}
           <input type="hidden" name="album_id"value="{{$album->id}}" />
           <fieldset>
-            <legend>Add an Image to {{$album->name}}</legend>
+            <legend>Добавить фотографию в {{$album->name}}</legend>
             <div class="form-group">
-              <label for="description">Image Description</label>
-              <textarea name="description" type="text"class="form-control" placeholder="Imagedescription"></textarea>
+              <label for="description">Описание изображения</label>
+              <textarea name="description" type="text"class="form-control" placeholder="Описание изображения"></textarea>
             </div>
             <div class="form-group">
-              <label for="image">Select an Image</label>
+              <label for="image">Выбрать изображение</label>
               {{Form::file('image')}}
             </div>
-            <button type="submit" class="btnbtn-default">Add Image!</button>
+            <button type="submit" class="btnbtn-default">Добавить</button>
           </fieldset>
         </form>
       </div>
