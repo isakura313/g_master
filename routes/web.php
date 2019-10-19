@@ -21,3 +21,7 @@ Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImageCont
 Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
 //удаление
 Route::post('/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

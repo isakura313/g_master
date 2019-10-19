@@ -8,7 +8,7 @@
       <a class="navbar-brand" href="/">Мои альбомы</a>
       <div class="nav-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="{{URL::route('create_album_form')}}">Создание нового альбома</a></li>
+          <li><a href="{{route('create_album_form')}}">Создание нового альбома</a></li>
         </ul>
       </div>
     </div>

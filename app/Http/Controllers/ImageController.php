@@ -36,6 +36,7 @@ class ImageController extends Controller
     $file = $request->file('image');
     //произошел рефакторинг кода
     $random_name = Str::random(8);
+    //конец рефакторинга
     $destinationPath = 'albums/';
     $extension = $file->getClientOriginalExtension();
     $filename=$random_name.'_album_image.'.$extension;
