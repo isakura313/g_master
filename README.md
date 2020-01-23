@@ -13,18 +13,18 @@ SIMPLE GALLERY ON LARAVEL
     DB_PASSWORD=
 Дальше нужно поставить пакеты зависимостей
 выполняете в командной строке
-    composer install
+   **composer install**
 
 Дальше делаем миграции, что бы у нас появились таблицы в нейше базе данных:
-    php artisan migrate
+    **php artisan migrate**
 
 потом запускаете сервер
-    php artisan serve
+    **php artisan serve**
 
 Там он вам скажет что нет ключа шифровки вашего приложения
 Генерируете ключ в командной строке
-    php artisan key:generate
+    **php artisan key:generate**
 Если сам не справляется
-    php artisan key:generate --show 
+    **php artisan key:generate --show** 
 и вставляет на его на 3 строчку .env
 Если не рефрешится, перезапустите сервер
