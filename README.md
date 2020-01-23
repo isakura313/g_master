@@ -4,26 +4,27 @@ SIMPLE GALLERY ON LARAVEL
 создайте в корневой папке проекта  файл .env в который нужно скопировать 
 содержимое файла .env
 Там с 9 по 16 сточки нужно поправить, указав имя вашего пользователя в MySQL и указав там имя схемы:
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=gal14
-DB_USERNAME=pavel
-DB_PASSWORD=
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=gal14
+    DB_USERNAME=pavel
+    DB_PASSWORD=
 Дальше нужно поставить пакеты зависимостей
 выполняете в командной строке
->> composer install
+    composer install
 
 Дальше делаем миграции, что бы у нас появились таблицы в нейше базе данных:
->> php artisan migrate
+    php artisan migrate
 
 потом запускаете сервер
->> php artisan serve
+    php artisan serve
 
 Там он вам скажет что нет ключа шифровки вашего приложения
 Генерируете ключ в командной строке
->> php artisan key:generate
+    php artisan key:generate
 Если сам не справляется
->>  php artisan key:generate --show 
+    php artisan key:generate --show 
 и вставляет на его на 3 строчку .env
 Если не рефрешится, перезапустите сервер
