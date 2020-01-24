@@ -4,7 +4,7 @@
 
 
 
-    <div class="container" style="text-align: center;">
+    <div class="main has-background-link" style="text-align: center;">
       <div class="span4" style="display: inline-block;margin-top:100px;">
 
         @if (isset($errors) && $errors->has(''))
@@ -23,29 +23,54 @@
           </div>
         @endif
 
-        <form name="createnewalbum" method="POST"action="{{route('create_album')}}" enctype="multipart/form-data">
+        <form name="createnewalbum"   method="POST"action="{{route('create_album')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
-          <fieldset>
-            <legend>Создайте альбом</legend>
-            <div class="form-group">
-              <label for="name">Имя альбома</label>
-              <input name="name" type="text" class="form-control"placeholder="Название альбома" value="{{old('name')}}">
+           <h3 class="is-size-3 has-text-light"> Создайте альбом </h3>
+     
+            <div class="field">
+              <label for="name" class="has-text-light" >Имя альбома</label>
+              <div class="control">
+                <input name="name" type="text" class="input" placeholder="Название альбома" value="{{old('name')}}">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="description">Описание альбома</label>
-              <textarea name="description" type="text"class="form-control" placeholder="Описание альбома">{{old('descrption')}}</textarea>
+           
+            <div class="field">
+              <label for="description" class="has-text-light">Описание альбома</label>
+              <div class="control">
+                <textarea name="description" type="text" class="input" placeholder="Описание альбома">{{old('descrption')}}</textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="cover_image">Выберите обложку для альбома</label>
-              {{Form::file('cover_image')}}
+
+           
+              <div class="file">
+              <label class="file-label">
+              
+              <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+                  <span class="file-label">
+                  {{Form::file('cover_image')}}
+              </span>
+                </span>
+            </label>
+              </div>
+             <div class="field">
+                <button type="submit" class="button is-primary is-pulled-right submit">Создать!</button>
             </div>
-            <button type="submit" class="btnbtn-default">Создать!</button>
-          </fieldset>
+            </div>
         </form>
       </div>
     </div> <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+    <style>
+  .main{
+    height: 93vh;
+    
+  }
+   .submit{
+     margin-top:20px;
+   }
+    </style>
   </body>
 </html>
