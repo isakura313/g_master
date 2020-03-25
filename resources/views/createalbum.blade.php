@@ -5,7 +5,7 @@
 
 
     <div class="main has-background-link" style="text-align: center;">
-      <div class="span4" style="display: inline-block;margin-top:100px;">
+      <div class="span4" style="display: inline-block; margin-top:100px;">
 
         @if (isset($errors) && $errors->has(''))
           <div class="alert alert-block alert-error fade in"id="error-block">
@@ -23,17 +23,17 @@
           </div>
         @endif
 
-        <form name="createnewalbum"   method="POST"action="{{route('create_album')}}" enctype="multipart/form-data">
+        <form name="createnewalbum"   method="POST" action="{{route('create_album')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
            <h3 class="is-size-3 has-text-light"> Создайте альбом </h3>
-     
+
             <div class="field">
               <label for="name" class="has-text-light" >Имя альбома</label>
               <div class="control">
                 <input name="name" type="text" class="input" placeholder="Название альбома" value="{{old('name')}}">
               </div>
             </div>
-           
+
             <div class="field">
               <label for="description" class="has-text-light">Описание альбома</label>
               <div class="control">
@@ -41,10 +41,10 @@
               </div>
             </div>
 
-           
+
               <div class="file">
               <label class="file-label">
-              
+
               <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
@@ -66,7 +66,7 @@
     <style>
   .main{
     height: 93vh;
-    
+
   }
    .submit{
      margin-top:20px;

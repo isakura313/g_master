@@ -1,10 +1,10 @@
 @include('includes.header')
   <body>
   @include('includes.nav')
-        
+
           <div class="columns is-multiline is-centered">
           @foreach($albums as $album)
-            <div class="column is-two-fifths">
+            <div class="column is-two-fifths is-centered">
               <div class="card">
                 <div class="card-image">
                 <figure class="image is-4by3">
@@ -22,7 +22,6 @@
             </div>
           @endforeach
             </div>
-        {{-- </div> --}}
-      {{-- </div><!-- /.container --> --}}
+
   </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/', array('as' => 'index','uses' => 'AlbumsController@getList')) ->middleware('auth');;
+Route::get('/', array('as' => 'index','uses' => 'AlbumsController@getList')) ->middleware('auth');
 //middleware позволяют нам делать фильтрацию http запросов на странице
 Route::get('/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm')) ->middleware('auth');;
 //создание альбома из формы
@@ -18,12 +18,14 @@ Route::get('/addimage/{id}', array('as' => 'add_image','uses' => 'ImageControlle
 Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
 //добавление изображений в сам альбом
 Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
-//удаление
+//удалениеÅ
 Route::post('/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('index');
+Route::get('/home', function (){
+   return redirect("home");
+});
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 

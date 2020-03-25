@@ -13,7 +13,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->integer('album_id')->unsigned();
             $table->string('image');
-            $table->string('description')->nullable(); // здесь правка от Хабра
+            $table->string('description')-> nullable(); // здесь правка от Хабра
             $table->foreign('album_id')->references('id')->on('albums')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });

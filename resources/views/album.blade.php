@@ -15,6 +15,9 @@
           <div class="field">
           <h3 class="is-size-5">Описание альбома :</h3>
           <p>{{$album->description}}<p>
+
+           <p>{{$album->users()-> user_id}}</p>
+              <p> {{$users-> user_id}}</p>
           </div>
           <a href="{{route('add_image',array('id'=>$album->id))}}"><button type="button"class="button is-primary">Добавить новую фотографию в альбом</button></a>
           <a href="{{route('delete_album',array('id'=>$album->id))}}" onclick="return confirm('Вы уверены?')"><button type="button" class="button is-primary">Удалить альбом</button></a>
