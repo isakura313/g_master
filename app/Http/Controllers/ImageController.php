@@ -56,7 +56,7 @@ class ImageController extends Controller
   }
 
 
-  //нам нужно получить перемещение 
+  //нам нужно получить перемещение
   public function postMove(Request $request)
 {
   $rules = array(

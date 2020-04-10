@@ -1,17 +1,9 @@
-<!doctype html>
+<!Doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ URL::asset('/css/favicon.png') }}" type="image/png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
     <title>Мои альбомы</title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
-    <style>
-      body {
-        padding-top: 50px;
-      }
-      .starter-template {
-        padding: 40px 15px;
-      text-align: center;
-      }
-    </style>
   </head>
