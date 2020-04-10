@@ -9,16 +9,18 @@
           <img class="media-object pull-left"alt="{{$album->name}}" src="/albums/{{$album->cover_image}}" width="350px">
           </figure>
           </div>
-          <div class="card-content has-text-light has-background-black-ter">
-            <h2 class="is-size-5">Название альбома:</h2>
-            <p>{{$album->name}}</p>
-          <div class="field">
-          <h3 class="is-size-5">Описание альбома :</h3>
-          <p>{{$album->description}}<p>
+          <div class="card-content has-background-black-ter">
+            <h5 class="is-size-5 has-text-light"> Создан пользователем:  <span class="has-text-primary">  {{$album->created_by}}</span>  </h2>
+            <h2 class="is-size-3 has-text-danger font-weight-bold"> {{$album->name}} </h2>
 
-           <p>{{$album->users()-> user_id}}</p>
-              <p> {{$users-> user_id}}</p>
-          </div>
+          <div class="field">
+
+            @if ($album->description == '' )
+              <h3 class="is-size-5 has-text-light is-italic"> описание отсутствует </h3>
+            @else
+              <h3 class="is-size-5 has-text-light is-italic" >{{$album->description}}</h3>
+            @endif
+          
           <a href="{{route('add_image',array('id'=>$album->id))}}"><button type="button"class="button is-primary">Добавить новую фотографию в альбом</button></a>
           <a href="{{route('delete_album',array('id'=>$album->id))}}" onclick="return confirm('Вы уверены?')"><button type="button" class="button is-primary">Удалить альбом</button></a>
         </div>
@@ -42,7 +44,7 @@
                 <p>Дата создания:  {{ date("d F Y",strtotime($photo->created_at)) }}at {{ date("g:ha",strtotime($photo->created_at)) }}</p>
                 <a href="{{route('delete_image',array('id'=>$photo->id))}}" onclick="returnconfirm('Вы уверены?')"><button type="button"class="button is-primary is-small">Удалить изображение</button></a>
                 <p>Переместить фотографию в другой альбом :</p>
-                <form name="movephoto" method="POST"action="{{URL::route('move_image')}}">
+                <form name="movephoto" method="POST"action="{{route('move_image')}}">
                     {{ csrf_field() }}
                   <select name="new_album">
                     @foreach($albums as $others)

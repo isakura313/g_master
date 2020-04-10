@@ -17,10 +17,12 @@ class CreateAlbumsTable extends Migration
         {
           $table->increments('id')->unsigned();
           $table->string('name'); //имя нашего альбома
-          $table->text('description'); // описание нашего альбома
+          $table->string('description'); // описание нашего альбома
+          $table->string('created_by');
           $table->string('cover_image'); //картинка на превью
+          $table->string('access'); //приватный или 
           $table->timestamps(); // дата создания. Необязательно ее показывать, но может быть полезна
-            $table->foreign('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+          // $table->foreign('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
 
         });
       }

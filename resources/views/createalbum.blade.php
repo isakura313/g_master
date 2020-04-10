@@ -2,8 +2,6 @@
   <body>
   @include('includes.nav')
 
-
-
     <div class="main has-background-link" style="text-align: center;">
       <div class="span4" style="display: inline-block; margin-top:100px;">
 
@@ -55,12 +53,25 @@
                 </span>
             </label>
               </div>
+              <div class="field">
+                {{-- <input type="text" value = "{{old('access')}}" name="access" class="input"> --}}
+              <div class="select">
+                <select name="access">
+                  <option value = "public" >public</option>
+                  <option value = "private" >private</option>
+                </select>
+              </div>
+            </div>
              <div class="field">
                 <button type="submit" class="button is-primary is-pulled-right submit">Создать!</button>
             </div>
+</div>
+                 
+
+  
+       
+            </form>
             </div>
-        </form>
-      </div>
     </div> <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <style>

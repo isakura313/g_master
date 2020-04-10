@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Album;
 use App\User;
+use Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,8 +19,6 @@ class AlbumsController extends Controller
       $albums = Album::with('Photos')->get();
       return view('index')->with('albums',$albums);
   }
-
-
 
 
   public function getUser(){
@@ -51,10 +50,12 @@ class AlbumsController extends Controller
       $album = Album::create(array(
         'name' => $request->get('name'),
         'description' => $request->get('description'),
+        'access' => $request->get('access'),
+        'created_by'=> Auth::user()->name,
         'cover_image' => $filename
       ));
 
-      return redirect()->route('show_album',['id'=>$album->id, 'user'=>$users-> user_id]);
+      return redirect()->route('show_album',['id'=>$album->id]);
   }
 
   public function getDelete($id) // возможность удаления альбома

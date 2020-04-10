@@ -1,26 +1,23 @@
 @include('includes.header')
-
 <body>
     @include('includes.nav')
 
     @section('content')
-    <div class="columns is-centered has-background-link main-register">
-        <div class="column is-half has-background-success">
-            <h3 class="is-size-2 has-text-centered has-text-light has-text-weight-bold"> {{ __('Регистрация') }} </h3>
-
+    <div class="columns is-centered main-register has-background-grey">
+        <div class="column is-half-desktop is-full-mobile  is-full-tablet">
+            <div class="card form-register"> 
+            <h3 class="is-size-2 has-text-centered has-text-weight-bold"> {{ __('Регистрация') }} </h3>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-
                 <div class="field">
                     <label for="name" class="label">{{ __('Имя') }}</label>
 
                     <div class="control">
                         <input id="name" type="text" class="input @error('name') is-danger @enderror" name="name"
                             value="{{ old('name') }}" required autocomplete="name" autofocus>
-
                         @error('name')
                         <p class="help is-danger" role="alert">
-                            {{ $message }}
+                            <i class="fas fa-envelope"> {{ $message }}
                         </p>
                         @enderror
                     </div>
@@ -77,13 +74,15 @@
         </div>
     </div>
     </div>
-    </div>
-    </div>
     @endsection
     @yield('content')
     <style>
         .main-register{
             height: 94vh;
+        }
+        .form-register{
+            padding: 0 2em 5em 2em;
+            border-radius: 5px;
         }
 
     </style>
