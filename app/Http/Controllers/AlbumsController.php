@@ -16,8 +16,8 @@ class AlbumsController extends Controller
 {
     public function getList() //получение списка альбомов
   {
-      $albums = Album::with('Photos')->get();
-      return view('index')->with('albums',$albums);
+    //   $albums = Album::with('Photos')->get();
+      return view('index')->with('albums', $private_album );
   }
 
 
